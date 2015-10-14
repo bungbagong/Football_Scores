@@ -39,8 +39,8 @@ public class myFetchService extends IntentService
     @Override
     protected void onHandleIntent(Intent intent)
     {
-        getData("n2");
-        getData("p2");
+        getData("n7");
+        getData("p7");
 
         return;
     }
@@ -61,6 +61,7 @@ public class myFetchService extends IntentService
         //Opening Connection
         try {
             URL fetch = new URL(fetch_build.toString());
+            //Log.d("bungbagong", fetch.toString());
             m_connection = (HttpURLConnection) fetch.openConnection();
             m_connection.setRequestMethod("GET");
             m_connection.addRequestProperty("X-Auth-Token",getString(R.string.api_key));
@@ -196,6 +197,12 @@ public class myFetchService extends IntentService
                         League.equals(SERIE_A)             ||
                         League.equals(BUNDESLIGA1)         ||
                         League.equals(BUNDESLIGA2)         ||
+                        League.equals(LIGUE1)              ||
+                        League.equals(LIGUE2)              ||
+                        League.equals(SEGUNDA_DIVISION)    ||
+                        League.equals(PRIMERA_LIGA)        ||
+                        League.equals(Bundesliga3)         ||
+                        League.equals(EREDIVISIE)          ||
                         League.equals(PRIMERA_DIVISION)     )
                 {
                     match_id = match_data.getJSONObject(LINKS).getJSONObject(SELF).

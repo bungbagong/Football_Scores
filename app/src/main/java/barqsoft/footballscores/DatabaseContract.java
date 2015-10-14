@@ -3,6 +3,7 @@ package barqsoft.footballscores;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 /**
  * Created by yehya khaled on 2/25/2015.
@@ -42,6 +43,7 @@ public class DatabaseContract
         }
         public static Uri buildScoreWithDate()
         {
+            Log.d("bungbagong",BASE_CONTENT_URI.buildUpon().appendPath("date").build().toString());
             return BASE_CONTENT_URI.buildUpon().appendPath("date").build();
         }
     }
