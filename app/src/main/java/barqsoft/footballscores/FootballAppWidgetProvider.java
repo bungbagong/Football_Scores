@@ -9,10 +9,13 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Implementation of App Widget functionality.
  */
-public class ExampleAppWidgetProvider extends AppWidgetProvider {
+public class FootballAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -50,7 +53,7 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
 /*
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.example_app_widget_provider);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.football_app_widget_provider);
         views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget
@@ -61,21 +64,29 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
 
         // Get the layout for the App Widget and attach an on-click listener
         // to the button
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.example_app_widget_provider);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.football_app_widget_provider);
         views.setOnClickPendingIntent(R.id.goButton, pendingIntent);
 
         String[] projection = new String[] {"home", "away", "time","home_goals","away_goals"};
 
-        Cursor lastGameCursor = context.getContentResolver().query(DatabaseContract.BASE_CONTENT_URI,
-                projection,null,null,null);
+        String[] dateString = new String[2];
+        Date widgetDate = new Date(System.currentTimeMillis()+((0)*86400000));
+        SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+        dateString[0] = mformat.format(widgetDate);
+        dateString[1] = "-1";
+
+        String selection = "date = ? AND home_goals != ?";
+
+        Cursor lastGameCursor = context.getContentResolver().query(DatabaseContract.scores_table.buildScoreForWidget(),
+                projection,selection,dateString," time DESC");
 
         Log.d("bungbagong",String.valueOf(lastGameCursor.getCount()));
         Log.d("bungbagong",lastGameCursor.toString());
 
-        if(lastGameCursor.moveToLast()){
+        if(lastGameCursor.moveToFirst()){
             views.setTextViewText(R.id.appwidget_text,lastGameCursor.getString(0));
             views.setTextViewText(R.id.appwidget_text_away,lastGameCursor.getString(1));
-            views.setTextViewText(R.id.appwidget_text_date,lastGameCursor.getString(2));
+            //views.setTextViewText(R.id.appwidget_text_date,lastGameCursor.getString(2));
             views.setTextViewText(R.id.appwidget_text_score, Utilies.getScores(lastGameCursor.getInt(3), lastGameCursor.getInt(4)));
         }
 

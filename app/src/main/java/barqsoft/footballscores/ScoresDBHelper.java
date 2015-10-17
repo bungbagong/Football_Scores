@@ -24,7 +24,7 @@ public class ScoresDBHelper extends SQLiteOpenHelper
         final String CreateScoresTable = "CREATE TABLE " + DatabaseContract.SCORES_TABLE + " ("
                 + scores_table._ID + " INTEGER PRIMARY KEY,"
                 + scores_table.DATE_COL + " TEXT NOT NULL,"
-                + scores_table.TIME_COL + " INTEGER NOT NULL,"
+                + scores_table.TIME_COL + " TEXT NOT NULL,"
                 + scores_table.HOME_COL + " TEXT NOT NULL,"
                 + scores_table.AWAY_COL + " TEXT NOT NULL,"
                 + scores_table.LEAGUE_COL + " INTEGER NOT NULL,"
