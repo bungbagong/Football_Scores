@@ -39,8 +39,9 @@ public class myFetchService extends IntentService
     @Override
     protected void onHandleIntent(Intent intent)
     {
-        getData("n7");
-        getData("p7");
+        getData("n2");
+        getData("p2");
+
 
         return;
     }
@@ -131,6 +132,11 @@ public class myFetchService extends IntentService
         {
             Log.e(LOG_TAG,e.getMessage());
         }
+
+        Intent intent = new Intent();
+        intent.setAction("barqsoft.footballscores.UPDATE_INTENT");
+        sendBroadcast(intent);
+
     }
     private void processJSONdata (String JSONdata,Context mContext, boolean isReal)
     {
@@ -198,12 +204,13 @@ public class myFetchService extends IntentService
                         League.equals(BUNDESLIGA1)         ||
                         League.equals(BUNDESLIGA2)         ||
                         League.equals(LIGUE1)              ||
-                        League.equals(LIGUE2)              ||
-                        League.equals(SEGUNDA_DIVISION)    ||
+                        //League.equals(LIGUE2)              ||
+                        //League.equals(SEGUNDA_DIVISION)    ||
                         League.equals(PRIMERA_LIGA)        ||
-                        League.equals(Bundesliga3)         ||
-                        League.equals(EREDIVISIE)          ||
-                        League.equals(PRIMERA_DIVISION)     )
+                        //League.equals(Bundesliga3)         ||
+                        //League.equals(EREDIVISIE)          ||
+                        League.equals(PRIMERA_DIVISION)
+                        )
                 {
                     match_id = match_data.getJSONObject(LINKS).getJSONObject(SELF).
                             getString("href");
@@ -278,6 +285,8 @@ public class myFetchService extends IntentService
         {
             Log.e(LOG_TAG,e.getMessage());
         }
+
+
 
     }
 }

@@ -9,11 +9,12 @@
         android:id="@+id/last_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:contentDescription="@string/appwidget_text"
+        android:layout_marginStart="8dp"
         android:text="Last Match Result"
-        android:layout_gravity="center"
         android:textColor="#33691e"
         android:textSize="12sp"
 
@@ -32,11 +33,12 @@
             android:id="@+id/appwidget_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="3"
-            android:contentDescription="@string/appwidget_text"
-            android:text="@string/appwidget_text"
+
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold|italic"
@@ -48,13 +50,14 @@
             android:id="@+id/appwidget_text_score"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
             android:layout_weight="3"
 
-            android:contentDescription="@string/appwidget_text"
-            android:text="@string/appwidget_text"
+
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -63,12 +66,12 @@
             android:id="@+id/appwidget_text_away"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="3"
 
-            android:contentDescription="@string/appwidget_text"
-            android:text="@string/appwidget_text"
             android:textColor="@android:color/black"
             android:textSize="14sp"
 
@@ -78,15 +81,16 @@
 
     <Button
         android:id="@+id/goButton"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#c5e1a5"
+        android:contentDescription="@string/ContentDescription_Goto_App"
         android:onClick="goButtonClicked"
-        android:textSize="15sp"
         android:text="View Today's Results "
         android:textAllCaps="false"
-        style="@android:style/Widget.DeviceDefault.Button.Borderless.Small">
+        android:textSize="15sp">
 
     </Button>
 
