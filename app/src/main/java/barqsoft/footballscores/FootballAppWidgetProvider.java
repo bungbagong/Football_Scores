@@ -12,7 +12,7 @@ import android.widget.RemoteViews;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import barqsoft.footballscores.service.myFetchService;
+import barqsoft.footballscores.service.FetchService;
 
 
 public class FootballAppWidgetProvider extends AppWidgetProvider {
@@ -25,7 +25,7 @@ public class FootballAppWidgetProvider extends AppWidgetProvider {
 
         //Log.d("bungbagong", "app widget onUpdate()");
 
-        Intent service_start = new Intent(context, myFetchService.class);
+        Intent service_start = new Intent(context, FetchService.class);
         context.startService(service_start);
 
         for (int i = 0; i < N; i++) {
